@@ -19,10 +19,12 @@ app.use(express.json());
 
 app.get("/styles", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.css"));
+  rollbar.info("styles work");
 });
 
 app.get("/js", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.js"));
+  rollbar.info("js works");
 });
 
 app.get("/", (req, res) => {
