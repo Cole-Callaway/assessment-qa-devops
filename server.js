@@ -1,6 +1,17 @@
 const express = require("express");
 const path = require("path");
 const app = express();
+var Rollbar = require("rollbar");
+const { rootCertificates } = require("tls");
+var rollbar = new Rollbar({
+  accessToken: "56636c2bea70430a93bbe5dcf1796152",
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+});
+
+// record a generic message and send it to Rollbar
+rollbar.log("Hello world!");
+
 const { bots, playerRecord } = require("./data");
 const { shuffleArray } = require("./utils");
 
@@ -16,6 +27,7 @@ app.get("/js", (req, res) => {
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.html"));
+  rollbar.info("HTML file works");
 });
 
 app.get("/api/robots", (req, res) => {
