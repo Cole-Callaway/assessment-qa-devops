@@ -49,7 +49,7 @@ test("Your duo appears when you select your robots", async () => {
 
   const displayed = await playerDuo.isDisplayed();
 
-  await driver.sleep(6000);
+  await driver.sleep(1000);
 
   expect(displayed).toBeTruthy();
 });
