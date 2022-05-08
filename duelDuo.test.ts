@@ -38,7 +38,7 @@ test("Your duo appears when you select your robots", async () => {
   drawInput.click();
 
   await driver.sleep(1000);
-
+  // cant find the right element to click
   const roboBtn = await driver.findElement(By.xpath("//button"));
 
   roboBtn.click();

@@ -34,9 +34,11 @@ app.get("/", (req, res) => {
 
 app.get("/api/robots", (req, res) => {
   try {
+    rollbar.log("Robots showed up", { author: "Cole", type: "manual entry" });
     res.status(200).send(botsArr);
   } catch (error) {
     console.log("ERROR GETTING BOTS", error);
+    rollbar.error("robots failed to show up");
     res.sendStatus(400);
   }
 });
